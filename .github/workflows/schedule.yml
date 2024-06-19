@@ -3,7 +3,6 @@ run-name: Scheduled Checks (${{ github.event_name }})
 on:
   workflow_dispatch:
   schedule:
-    # FIXME: Modify based on how often one wants to run these scheduled checks
     - cron: '0 0 1 * *'  # once a month
 jobs:
   checks:

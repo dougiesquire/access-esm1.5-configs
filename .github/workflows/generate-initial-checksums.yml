@@ -71,7 +71,7 @@ jobs:
       commit-checksums: ${{ inputs.commit-checksums }}
       committed-checksum-location: ${{ inputs.committed-checksum-location }}
       committed-checksum-tag: "${{ inputs.config-branch-name }}-${{ inputs.committed-checksum-tag-version }}"
-      environment-name: "Gadi Initial Checksum"  # FIXME: This Environment doesn't nessecarily have to be called this
+      environment-name: "Gadi Initial Checksum"
       model-config-tests-version: ${{ needs.config.outputs.model-config-tests-version }}
       python-version: ${{ needs.config.outputs.python-version }}
     permissions:
