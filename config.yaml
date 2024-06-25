@@ -41,7 +41,7 @@ collate:
    restart: true
    mem: 4GB
 
-restart: /g/data/access/payu/access-esm/restart/pre-industrial
+restart: /g/data/vk83/experiments/inputs/access-esm1p5/historical/restart
 
 calendar:
     start:
