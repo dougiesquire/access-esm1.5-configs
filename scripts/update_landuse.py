@@ -1,4 +1,4 @@
-#!/g/data/hh5/public/apps/nci_scripts/python-analysis3 
+#!/g/data/hh5/public/apps/nci_scripts/python-analysis3
 # Copyright 2020 Scott Wales
 # author: Scott Wales <scott.wales@unimelb.edu.au>
 #
@@ -14,14 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Expects land use dataset and restart file as arguments.
+
 import mule
 import xarray
 import os
 import shutil
 import sys
 import tempfile
-
-landuse = xarray.open_dataset('work/atmosphere/INPUT/cableCMIP6_LC_1850-2015.nc').fraction
 
 class ReplaceOp(mule.DataOperator):
     def __init__(self, da):
@@ -31,10 +31,11 @@ class ReplaceOp(mule.DataOperator):
         return source
 
     def transform(self, source, result):
+        # Use the pseudo level (lbuser5) to select appropriate vegtype
         return self.da.isel(vegtype = source.lbuser5 - 1).data
 
-
-restart = sys.argv[1]
+landuse = xarray.open_dataset(sys.argv[1]).fraction
+restart = sys.argv[2]
 
 stash_landfrac = 216
 stash_landfrac_lastyear = 835
@@ -42,14 +43,19 @@ stash_landfrac_lastyear = 835
 mf = mule.DumpFile.from_file(restart)
 
 year = mf.fixed_length_header.t2_year
+# Expect to be updating once per year so should have month=1 and day=1
+month = mf.fixed_length_header.t2_month
+day = mf.fixed_length_header.t2_day
+if month != 1 or day != 1:
+    raise ValueError(f"Unexpected month, day in update_landuse.py {month} {day}")
 
 print(f'Updating land use for year {year}')
 
 out = mf.copy()
 out.validate = lambda *args, **kwargs: True
 
-set_current_landuse = ReplaceOp(landuse.sel(time=f'{year:04d}', method='nearest'))
-set_previous_landuse = ReplaceOp(landuse.sel(time=f'{year-1:04d}', method='nearest'))
+set_current_landuse = ReplaceOp(landuse.sel(time=f'{year:04d}-01-01'))
+set_previous_landuse = ReplaceOp(landuse.sel(time=f'{year-1:04d}-01-01'))
 
 for f in mf.fields:
     if f.lbuser4 == stash_landfrac:
