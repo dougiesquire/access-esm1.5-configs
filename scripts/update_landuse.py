@@ -14,14 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Expects land use dataset and restart file as arguments.
+
 import mule
 import xarray
 import os
 import shutil
 import sys
 import tempfile
-
-landuse = xarray.open_dataset('work/atmosphere/INPUT/cableCMIP6_LC_1850-2015.nc').fraction
 
 class ReplaceOp(mule.DataOperator):
     def __init__(self, da):
@@ -34,8 +34,8 @@ class ReplaceOp(mule.DataOperator):
         # Use the pseudo level (lbuser5) to select appropriate vegtype
         return self.da.isel(vegtype = source.lbuser5 - 1).data
 
-
-restart = sys.argv[1]
+landuse = xarray.open_dataset(sys.argv[1]).fraction
+restart = sys.argv[2]
 
 stash_landfrac = 216
 stash_landfrac_lastyear = 835
@@ -47,7 +47,7 @@ year = mf.fixed_length_header.t2_year
 month = mf.fixed_length_header.t2_month
 day = mf.fixed_length_header.t2_day
 if month != 1 or day != 1:
-    raise Exception(f"Unexpected month, day in update_landuse.py {month} {day}")
+    raise ValueError(f"Unexpected month, day in update_landuse.py {month} {day}")
 
 print(f'Updating land use for year {year}')
 
