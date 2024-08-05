@@ -7,13 +7,24 @@ This repo will contain standard global configurations for ACCESS-ESM1.5, the ACC
 This is an "omnibus repository": it contains multiple related configurations, and each
 configuration is stored in a separate branch.
 
-Branches utilise a naming scheme of <<<FIXME: ADD IN NAMING SCHEME>>>.
+Branches utilise a simple naming scheme:
+
+`{release}-{scenario}[+{modifier}]`
+
+where `release` signifies this is the release branch that is tested, versioned and ready for use, `scenario` is the base experimental design with optional `modifiers`. All configurations are assumed to be global extent with nominal 1 degree resolution.
+
+Some examples of possible values of the specifiers:
+
+* scenario: historical, preindustrial, ssp126
+* modifier: concentration, interactiveC, noLUC
+
+where scenario is typically a [CMIP experiment identifier](https://wcrp-cmip.github.io/CMIP6_CVs/docs/CMIP6_experiment_id.html), concentration and interactiveC describe the CO2 cycling protocol, and noLUC is no land-use change.
 
 Most configurations are adapted from work by the [CLEX CMS team](https://github.com/coecms/access-esm).
 
 ## Supported configurations
 
-All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/<model>-configs/branches) and should also be listed below:
+All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/access-esm1.5-configs/branches) and should also be listed below:
 
 | Branch | Configuration Description |
 | ------ | ------------------------- |
@@ -38,7 +49,7 @@ git clone -b <experiment> https://github.com/ACCESS-NRI/model-configs/ <experime
 
 and replace `<experiment>` with the branch name or tag of the experiment you wish to run.
 
-[ACCESS-Hive](https://access-hive.org.au/) contains [detailed instructions for how to configure and run `<MODEL>` with `payu`](https://access-hive.org.au/models/run-a-model).
+[ACCESS-Hive](https://access-hive.org.au/) contains [detailed instructions for how to configure and run `ACCESS-ESM1.5` with `payu`](https://access-hive.org.au/models/run-a-model).
 
 ## CI and Reproducibility Checks
 
@@ -79,4 +90,7 @@ For more information on the manually running the pytests that are run as part of
 
 ## Conditions of use
 
-<<<FIXME: ADD CONDITIONS OF USE>>>
+The developers of ACCESS-ESM1.5 request that users of these model configurations
+
+1. Consider citing https://doi.org/10.1071/ES19035
+2. Include an acknowledgment such as the following: The authors thank CSIRO Oceans and Atmosphere for developing the ACCESS-ESM1.5 model and making it freely available to researchers.
