@@ -91,24 +91,25 @@ Use the existing `release-*` version. If there isn't an existing version set to 
 
 ##### realm
 
-Acceptable values for this field must be set as a sequence:
+Acceptable values for this field are shown below and must be set as a sequence:
 
 ```yaml
 realm:
-    - <acceptable value 1>
-    - <acceptable value 2>
-    # - ...
+    - atmosphere
+    - ocean
+    - seaIce
+    - land
+    - ocnBgchm
 ```
 
 ##### nominal resolution
 
-Choose the appropriate value for the resolution used:
+There is currently only one supported nominal resolution:
 
 | Config resolution | Nominal Resolution |
 | -- | -- |
 | 1&deg; | 100 km |
 
-`<Add more as applicable>`
 
 These are sourced from [the CMIP6 controlled vocabulary](https://github.com/WCRP-CMIP/CMIP6_CVs/blob/main/CMIP6_nominal_resolution.json). If your resolution differs from those listed you will need to make a pull request to add it to this documentation and the QA checks.
 
@@ -122,7 +123,7 @@ We have a "controlled vocabulary of keywords to prevent a proliferation of synon
 
 ##### reference
 
-An appropriate scientific reference for the configuration. `<Give example of an appropriate scientific reference for this model>`
+An appropriate scientific reference for the configuration. For ACCESS-ESM1.5 this should be https://doi.org/10.1071/ES19035 if there is no more appropriate reference.
 
 ##### license
 
@@ -134,24 +135,27 @@ This is a bit tricky. Ideally this should be a URL to the GitHub (or similar) re
 
 ##### model
 
-`<Give acceptable model names>`
+Should be `access-esm1.5`
 
 #### Configuration settings
 
-##### restart_period
+##### calendar
 
-This is checked to make sure a shorter run time hasn't been set during testing and forgotten to set back to the proper value. As it is difficult to create a general heuristic the values have been hard-coded to those shown below:
+The values in `calendar` are checked to make sure the correct `start` and `runtime` are set. 
 
-| Config resolution | `restart_period`|
-| -- | -- |
+`runtime` should always be `year:1`, `months:0`, `days:0` because land-use changes are recalculated every year for the `historical` configuration. This is not the case for `preindustrial`, but it is kept at 1 year for consistency.
 
-`<This table needs to be filled in for the model in question>`
+As it is difficult to create a general heuristic the values for `start` have been hard-coded to those shown below:
+
+| Config | `year`| `month` | `day`
+| preindustrial | 101 | 1 | 1 |
+| historical | 1850 | 1 | 1 |
 
 ##### restart_freq
 
 This governs how what model restart files are retained.
 
-The requirement is simply that a date-based frequency be used so that restarts are saved in a reliable manner. Typical values are `1YS` or `5YS` for 0.1&deg; models, and `5YS` to `20YS` for 1&deg;. See the [payu documentation](https://payu.readthedocs.io/en/latest/config.html#model) for a detailed description of the meaning of the time units in `restart_freq`.
+The requirement is simply that a date-based frequency be used so that restarts are saved in a reliable manner. A typical value is `20YS`. See the [payu documentation](https://payu.readthedocs.io/en/latest/config.html#model) for a detailed description of the meaning of the time units in `restart_freq`.
 
 ##### sync
 
