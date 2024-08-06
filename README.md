@@ -57,7 +57,7 @@ This repository makes use of GitHub Actions to perform reproducibility checks on
 
 ### Config Branches
 
-Config branches are branches that store model configurations of the form: `release-<config>` or `dev-<config>`, for example: `release-1deg_jra55_iaf`. For more information on creating your own config branches, or for understanding the PR process in this repository, see the [CONTRIBUTING.md](CONTRIBUTING.md).
+Config branches are branches that store model configurations of the form: `release-<config>` or `dev-<config>`, for example: `release-historical+concentration`. For more information on creating your own config branches, or for understanding the PR process in this repository, see the [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### Config Tags
 
@@ -92,5 +92,7 @@ For more information on the manually running the pytests that are run as part of
 
 The developers of ACCESS-ESM1.5 request that users of these model configurations
 
-1. Consider citing https://doi.org/10.1071/ES19035
-2. Include an acknowledgment such as the following: The authors thank CSIRO Oceans and Atmosphere for developing the ACCESS-ESM1.5 model and making it freely available to researchers.
+1. Cite https://doi.org/10.1071/ES19035
+2. Include an acknowledgment such as the following: "The authors thank CSIRO for developing the ACCESS-ESM1.5 model configuration and making it freely available to researchers."
+ACCESS-NRI requests users follow the [guidelines for acknowledging ACCESS-NRI](https://www.access-nri.org.au/resources/acknowledging-us/) and include a statement such as
+"This research used the ACCESS-ESM1.5 model infrastructure provided by ACCESS-NRI, which is enabled by the Australian Government’s National Collaborative Research Infrastructure Strategy (NCRIS)”
