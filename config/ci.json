@@ -12,11 +12,11 @@
     },
     "qa": {
         "default": {
-            "markers": "config"
+            "markers": "access_esm1p5 or config"
         }
     },
     "default": {
-        "model-config-tests-version": "0.0.1",
+        "model-config-tests-version": "0.0.3",
         "python-version": "3.11.0"
     }
 }
