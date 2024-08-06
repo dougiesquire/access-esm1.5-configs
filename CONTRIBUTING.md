@@ -119,7 +119,8 @@ We have a "controlled vocabulary of keywords to prevent a proliferation of synon
 
 | Topic | Keywords (mutually exclusive) |
 |--|--|
-| `<topic>` | `<keywords>` |
+| Spatial extent | `global`|
+| Model | `access-esm1.5` |
 
 ##### reference
 
