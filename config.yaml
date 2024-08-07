@@ -15,7 +15,7 @@ laboratory: access-esm
 
 jobname: historical
 queue: normal
-walltime: 1:40:00
+walltime: 2:30:00
 storage:
   gdata:
     - hh5
