@@ -1,3 +1,18 @@
+# Refer to https://payu.readthedocs.io/en/latest/config.html for full details of the 
+# payu configuration settings.
+
+# PBS configuration
+
+# If submitting to a different project to your default, uncomment line below
+# and replace PROJECT_CODE with appropriate code. This may require setting shortpath
+# project: PROJECT_CODE
+
+# Force payu to always find, and save, files in this scratch project directory
+# shortpath: /scratch/PROJECT_CODE
+
+# Note: if laboratory is relative path, it is relative to shortpath/$USER
+laboratory: access-esm
+
 jobname: historical
 queue: normal
 walltime: 1:40:00
@@ -5,15 +20,14 @@ storage:
   gdata:
     - hh5
 
-# note: if laboratory is relative path, it is relative to /scratch/$PROJECT/$USER
-laboratory: access-esm
+# Model configuration
 model: access
 
 submodels:
     - name: atmosphere
       model: um
       ncpus: 192
-      exe: /g/data/access/payu/access-esm/bin/coe/um7.3x
+      exe: um_hg3.exe
       input:
         - /g/data/vk83/experiments/inputs/access-esm1p5/historical/atmosphere
         - /g/data/access/payu/access-esm/input/pre-industrial/atmosphere
@@ -21,7 +35,7 @@ submodels:
     - name: ocean
       model: mom
       ncpus: 180
-      exe: /g/data/access/payu/access-esm/bin/coe/mom5xx
+      exe: fms_ACCESS-CM.x
       input:
         - /g/data/access/payu/access-esm/input/pre-industrial/ocean/common
         - /g/data/access/payu/access-esm/input/pre-industrial/ocean/pre-industrial
@@ -29,7 +43,7 @@ submodels:
     - name: ice
       model: cice
       ncpus: 12
-      exe: /g/data/access/payu/access-esm/bin/coe/cicexx
+      exe: cice_access_360x300_12x1_12p.exe
       input:
         - /g/data/access/payu/access-esm/input/pre-industrial/ice
 
@@ -39,13 +53,23 @@ submodels:
       input:
         - /g/data/access/payu/access-esm/input/pre-industrial/coupler
 
+# Collation
 collate:
-   exe: /g/data/access/payu/access-esm/bin/mppnccombine
+   exe: mppnccombine.spack
    restart: true
    mem: 4GB
 
-restart: /g/data/vk83/experiments/inputs/access-esm1p5/historical/restart
+restart: /g/data/vk83/experiments/inputs/access-esm1p5/modern/historical/restart
 
+# Modules for loading model executables
+modules:
+  use:
+      - /g/data/vk83/apps/spack/0.22/release/modules/linux-rocky8-x86_64_v4
+  load:
+      - access-esm1p5/2024.05.0
+
+
+# Timing controls
 calendar:
     start:
         # Check also 'MODEL_BASIS_TIME' in atmosphere namelists,
@@ -62,10 +86,34 @@ calendar:
 # Increase to run multiple years in a single submission
 runspersub: 1
 
+# Misc
+restart_freq: 5
+
+runlog: true
+manifest:
+  reproduce:
+    exe: True
+
+# set number of cores per node (28 for normalbw, 48 for normal on gadi)
+platform:
+    nodesize: 48
+stacksize: unlimited
+qsub_flags: -W umask=027
+
+
+# Sync options for automatically copying data from ephemeral scratch space to 
+# longer term storage
+sync:
+    enable: False # set path below and change to true
+    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
+
+# If a postscript included (such as the automated netcdf conversion), the latest output and restart files will not 
+# be automatically synced at the end of a run. To sync the latest output after a postscript has completed,
+# manually run `payu sync` from the command line.
+
+# userscripts:
 userscripts:
     # Apply land use changes after each run
     run: ./scripts/update_landuse_driver.sh
 
-stacksize: unlimited
-
-qsub_flags: -W umask=027
+# postscript:
