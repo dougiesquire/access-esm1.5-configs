@@ -1,5 +1,8 @@
-# Refer to https://payu.readthedocs.io/en/latest/config.html for full details of the 
-# payu configuration settings.
+# A tutorial for running ACCESS ESM1.5 can be found at
+# https://access-hive.org.au/models/run-a-model/run-access-esm
+# Full details about the payu configuration settings are available at
+# https://payu.readthedocs.io/en/latest/config.html
+
 
 # PBS configuration
 
@@ -19,6 +22,13 @@ walltime: 2:30:00
 storage:
   gdata:
     - hh5
+
+# Modules for loading model executables
+modules:
+  use:
+      - /g/data/vk83/modules/access-models/
+  load:
+      - access-esm1p5/2024.05.0
 
 # Model configuration
 model: access
@@ -41,7 +51,7 @@ submodels:
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/atmosphere/forcing/global.N96/2021.06.22/ozone_1849_2015_ESM1.anc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/atmosphere/forcing/resolution_independent/2021.06.22/volcts_cmip6.dat
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/atmosphere/forcing/resolution_independent/2021.06.22/TSI_CMIP6_ESM_v2
-        # Land        
+        # Land
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/atmosphere/land/biogeochemistry/global.N96/2021.06.22/Ndep_1849_2015.anc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/atmosphere/land/vegetation/global.N96/2024.07.04/cableCMIP6_LC_1850-2015.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/atmosphere/land/soiltype/global.N96/2020.05.19/qrparm.soil_igbp_vg
@@ -50,7 +60,7 @@ submodels:
         - /g/data/vk83/configurations/inputs/access-esm1p5/share/atmosphere/land/biogeochemistry/resolution_independent/2020.05.19/pftlookup_csiro_v16_17tiles_wtlnds.csv
         - /g/data/vk83/configurations/inputs/access-esm1p5/share/atmosphere/land/biogeophysics/resolution_independent/2020.05.19/def_soil_params.txt
         - /g/data/vk83/configurations/inputs/access-esm1p5/share/atmosphere/land/biogeophysics/resolution_independent/2020.05.19/def_veg_params.txt
-        # Spectral        
+        # Spectral
         - /g/data/vk83/configurations/inputs/access-esm1p5/share/atmosphere/spectral/resolution_independent/2020.05.19/spec3a_sw_hadgem1_6on
         - /g/data/vk83/configurations/inputs/access-esm1p5/share/atmosphere/spectral/resolution_independent/2020.05.19/spec3a_lw_hadgem1_6on
         # Grids
@@ -64,7 +74,7 @@ submodels:
       ncpus: 180
       exe: fms_ACCESS-CM.x
       input:
-        # Biogeochemistry      
+        # Biogeochemistry
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/ocean/biogeochemistry/global.1deg/2020.05.19/dust.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/ocean/biogeochemistry/global.1deg/2020.05.19/ocmip2_press_monthly_om1p5_bc.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/share/ocean/biogeochemistry/global.1deg/2024.07.12/bgc_param.nc
@@ -93,7 +103,7 @@ submodels:
       model: oasis
       ncpus: 0
       input:
-        # Grids      
+        # Grids
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/coupler/grids/global.oi_1deg.a_N96/2020.05.19/grids.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/coupler/grids/global.oi_1deg.a_N96/2020.05.19/areas.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/coupler/grids/global.oi_1deg.a_N96/2020.05.19/masks.nc
@@ -111,20 +121,9 @@ collate:
    exe: mppnccombine.spack
    restart: true
    mem: 4GB
+   walltime: 1:00:00
 
-<<<<<<< HEAD
-restart: /g/data/vk83/experiments/inputs/access-esm1p5/modern/historical/restart
-=======
 restart: /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/restart
->>>>>>> historical
-
-# Modules for loading model executables
-modules:
-  use:
-      - /g/data/vk83/apps/spack/0.22/release/modules/linux-rocky8-x86_64_v4
-  load:
-      - access-esm1p5/2024.05.0
-
 
 # Timing controls
 calendar:
@@ -140,7 +139,6 @@ calendar:
         months: 0
         days: 0
 
-# Increase to run multiple years in a single submission
 runspersub: 1
 
 # Misc
@@ -151,9 +149,6 @@ manifest:
   reproduce:
     exe: True
 
-# set number of cores per node (28 for normalbw, 48 for normal on gadi)
-platform:
-    nodesize: 48
 stacksize: unlimited
 qsub_flags: -W umask=027
 
