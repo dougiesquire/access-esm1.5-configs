@@ -26,7 +26,7 @@ storage:
 # Modules for loading model executables
 modules:
   use:
-      - /g/data/vk83/modules/access-models/
+      - /g/data/vk83/modules/
   load:
       - access-esm1p5/2024.05.0
 
@@ -123,7 +123,7 @@ collate:
    mem: 4GB
    walltime: 1:00:00
 
-restart: /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/restart
+restart: /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/restart/
 
 # Timing controls
 calendar:
@@ -142,7 +142,7 @@ calendar:
 runspersub: 1
 
 # Misc
-restart_freq: 5
+restart_freq: 10YS
 
 runlog: true
 manifest:
@@ -163,7 +163,6 @@ sync:
 # be automatically synced at the end of a run. To sync the latest output after a postscript has completed,
 # manually run `payu sync` from the command line.
 
-# userscripts:
 userscripts:
     # Apply land use changes after each run
     run: ./scripts/update_landuse_driver.sh
