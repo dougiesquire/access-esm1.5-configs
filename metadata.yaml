@@ -9,7 +9,7 @@ keywords:
   - global
   - access-esm1.5
 realm:
-  - atmosphere
+  - atmos
   - land
   - ocean
   - ocnBgchem
