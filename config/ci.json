@@ -16,7 +16,7 @@
         }
     },
     "default": {
-        "model-config-tests-version": "0.0.4",
+        "model-config-tests-version": "0.0.5",
         "python-version": "3.11.0"
     }
 }
