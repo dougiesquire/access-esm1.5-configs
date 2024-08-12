@@ -1,0 +1,22 @@
+contact: Add your name here
+email: Add your email address here
+created: Add the date you started the experiment here (YYYY-MM-DD)
+description: |-
+  FIXME: Add Description field
+notes: |-
+  FIXME: Add Notes field
+keywords:
+  - global
+  - access-esm1.5
+realm:
+  - atmosphere
+  - land
+  - ocean
+  - ocnBgchem
+  - seaIce
+nominal_resolution: 100 km
+reference: https://doi.org/10.1071/ES19035
+license: CC-BY-4.0
+model: ACCESS-ESM1.5
+version: '1.0'
+url: https://github.com/ACCESS-NRI/access-esm1.5-configs.git
