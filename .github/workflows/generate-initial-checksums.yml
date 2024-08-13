@@ -18,7 +18,6 @@ on:
       committed-checksum-tag-version:
         type: string
         required: false
-        default: '1.0'
         description: "If checksums are being committed: The initial version for the git tag associated with the committed checksums."
 jobs:
   config:
