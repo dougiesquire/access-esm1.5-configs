@@ -122,7 +122,7 @@ collate:
    restart: true
    mem: 4GB
    walltime: 1:00:00
-   mpi: true
+   mpi: false
 
 restart: /g/data/vk83/configurations/inputs/access-esm1p5/modern/historical/restart/
 
@@ -154,13 +154,13 @@ stacksize: unlimited
 qsub_flags: -W umask=027
 
 
-# Sync options for automatically copying data from ephemeral scratch space to 
+# Sync options for automatically copying data from ephemeral scratch space to
 # longer term storage
 sync:
     enable: False # set path below and change to true
     path: null # Set to location on /g/data or a remote server and path (rsync syntax)
 
-# If a postscript included (such as the automated netcdf conversion), the latest output and restart files will not 
+# If a postscript included (such as the automated netcdf conversion), the latest output and restart files will not
 # be automatically synced at the end of a run. To sync the latest output after a postscript has completed,
 # manually run `payu sync` from the command line.
 
