@@ -8,6 +8,7 @@
 "ocean_bgc_mth", 1,  "months", 1, "days", "time",
 "ocean_bgc_ann", 12,  "months", 1, "days", "time",
 "ocean"      ,                12,  "months", 1, "days", "time",
+"gtracer_flux", 1,  "months", 1, "days", "time",
 #
 #===========================
 # OCEAN DIAGNOSTICS (MOM5)
@@ -669,33 +670,67 @@
 #         = 8  packed 1-byte (not tested?)
 
 # bgc fields
-"ocean_model","no3","no3",       "ocean_bgc","all",.true.,"none",2
-"ocean_model","phy","phy",       "ocean_bgc","all",.true.,"none",2
-"ocean_model","o2","o2",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","det","det",       "ocean_bgc","all",.true.,"none",2
-"ocean_model","zoo","zoo",       "ocean_bgc","all",.true.,"none",2
-"ocean_model","caco3","caco3",     "ocean_bgc","all",.true.,"none",2
-"ocean_model","dic","dic",       "ocean_bgc","all",.true.,"none",2
-"ocean_model","alk","alk",       "ocean_bgc","all",.true.,"none",2
-"ocean_model","adic","adic",      "ocean_bgc","all",.true.,"none",2
-"ocean_model","fe","fe",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","stf03","stf03",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","stf07","stf07",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","stf09","stf09",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","stf10","stf10",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","pco2","pco2",          "ocean_bgc","all",.true.,"none",2
-"ocean_model","paco2","paco2",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","pprod_gross","pprod_gross",   "ocean_bgc","all",.true.,"none",2
-"ocean_model","pprod_gross_2d","pprod_gross_2d",   "ocean_bgc","all",.true.,"none",2
-"ocean_model","export_prod","export_prod",   "ocean_bgc","all",.true.,"none",2
-"ocean_model","export_inorg","export_inorg",   "ocean_bgc","all",.true.,"none",2
-"ocean_model","total_co2_flux","total_co2_flux","ocean_bgc","all",.true.,"none",2
-"ocean_model","total_aco2_flux","total_aco2_flux","ocean_bgc","all",.true.,"none",2
-"ocean_model","atm_co2","atm_co2",   "ocean_bgc","all",.true.,"none",2
-"ocean_model","wnd","wnd",   "ocean_bgc","all",.true.,"none",2
-"ocean_model","det_sediment","det_sediment",        "ocean_bgc","all",.true.,"none",2
-"ocean_model","caco3_sediment","caco3_sediment",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","no3","no3",       "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","phy","phy",       "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","o2","o2",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","det","det",       "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","zoo","zoo",       "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","caco3","caco3",     "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","dic","dic",       "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","alk","alk",       "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","adic","adic",      "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","fe","fe",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","o2_stf","o2_stf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","dic_stf","dic_stf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","adic_stf","adic_stf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","fe_stf","fe_stf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","pco2","pco2",          "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","paco2","paco2",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","pprod_gross","pprod_gross",   "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","pprod_gross_2d","pprod_gross_2d",   "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","export_prod","export_prod",   "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","export_inorg","export_inorg",   "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","htotal","htotal",   "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","ahtotal","ahtotal",   "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","total_co2_flux","total_co2_flux","ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","total_aco2_flux","total_aco2_flux","ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","det_sediment","det_sediment",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","caco3_sediment","caco3_sediment",        "ocean_bgc","all",.true.,"none",2
 
+"atmos_sfc", "co2_flux_pcair_atm",     "co2_flux_pcair_atm","gtracer_flux","all",.true.,"none",2
+"atmos_sfc", "co2_flux_u10_atm",       "co2_flux_u10_atm",  "gtracer_flux","all",.true.,"none",2
+#"atmos_sfc", "co2_flux_psurf_atm",     "co2_flux_psurf_atm","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "co2_flux_alpha_ocn",     "co2_flux_alpha_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "co2_flux_csurf_ocn",     "co2_flux_csurf_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "co2_flux_sc_no_ocn",     "co2_flux_sc_no_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","co2_flux_flux_ice_ocn",  "co2_flux_flux_ice_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","co2_flux_deltap_ice_ocn","co2_flux_deltap_ice_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","co2_flux_kw_ice_ocn",    "co2_flux_kw_ice_ocn","gtracer_flux","all",.true.,"none",2
+
+"atmos_sfc", "co2_nat_flux_pcair_atm",     "co2_nat_flux_pcair_atm","gtracer_flux","all",.true.,"none",2
+"atmos_sfc", "co2_nat_flux_u10_atm",       "co2_nat_flux_u10_atm",  "gtracer_flux","all",.true.,"none",2
+#"atmos_sfc", "co2_nat_flux_psurf_atm",     "co2_nat_flux_psurf_atm","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "co2_nat_flux_alpha_ocn",     "co2_nat_flux_alpha_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "co2_nat_flux_csurf_ocn",     "co2_nat_flux_csurf_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "co2_nat_flux_sc_no_ocn",     "co2_nat_flux_sc_no_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","co2_nat_flux_flux_ice_ocn",  "co2_nat_flux_flux_ice_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","co2_nat_flux_deltap_ice_ocn","co2_nat_flux_deltap_ice_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","co2_nat_flux_kw_ice_ocn",    "co2_nat_flux_kw_ice_ocn","gtracer_flux","all",.true.,"none",2
+
+"atmos_sfc", "o2_flux_pcair_atm",     "o2_flux_pcair_atm","gtracer_flux","all",.true.,"none",2
+"atmos_sfc", "o2_flux_u10_atm",       "o2_flux_u10_atm",  "gtracer_flux","all",.true.,"none",2
+#"atmos_sfc", "o2_flux_psurf_atm",     "o2_flux_psurf_atm","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "o2_flux_alpha_ocn",     "o2_flux_alpha_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_sfc", "o2_flux_csurf_ocn",     "o2_flux_csurf_ocn","gtracer_flux","all",.true.,"none",2
+#"ocean_sfc", "o2_flux_sc_no_ocn",     "o2_flux_sc_no_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","o2_flux_flux_ice_ocn",  "o2_flux_flux_ice_ocn","gtracer_flux","all",.true.,"none",2
+#"ocean_flux","o2_flux_deltap_ice_ocn","o2_flux_deltap_ice_ocn","gtracer_flux","all",.true.,"none",2
+"ocean_flux","o2_flux_kw_ice_ocn",    "o2_flux_kw_ice_ocn","gtracer_flux","all",.true.,"none",2
+
+"ocean_flux","dry_dep_fe_flux_ice_ocn",  "dry_dep_fe_flux_ice_ocn","gtracer_flux","all",.true.,"none",2
+
+"ocean_model","wnd","wnd",   "gtracer_flux","all",.true.,"none",2
+"ocean_model","atm_co2","atm_co2",   "gtracer_flux","all",.true.,"none",2
 
  "ocean_model","surface_no3","no3os_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
  "ocean_model","surface_phy","phynos_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
@@ -703,25 +738,25 @@
  "ocean_model","surface_dic","dissicnatos_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
  "ocean_model","surface_adic","dissicos_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
  "ocean_model","surface_o2","o2os_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","pprod_gross_2d","intpp_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","export_prod","epn100_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","export_inorg","eparag100_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","pco2","spco2nat_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","paco2","spco2_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","stf07","fgco2nat_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","stf09","fgco2_raw",   "ocean_bgc_mth","all",.true.,"none",2
- "ocean_model","stf03","fgo2_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","pprod_gross_2d","intpp_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","export_prod","epn100_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","export_inorg","eparag100_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","pco2","spco2nat_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","paco2","spco2_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","dic_stf","fgco2nat_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","adic_stf","fgco2_raw",   "ocean_bgc_mth","all",.true.,"none",2
+ "generic_wombatlite","o2_stf","fgo2_raw",   "ocean_bgc_mth","all",.true.,"none",2
 
-"ocean_model","cfc_11","cfc11_raw" ,"ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","cfc_12","cfc12_raw" ,"ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","adic","dissic_raw",      "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","dic","dissicnat_raw",       "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","caco3","arag_raw",     "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","alk","talk_raw",       "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","o2","o2_raw",        "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","no3","no3_raw",       "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","fe","fe_raw",        "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","det","pon_raw",       "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","phy","phyn_raw",       "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","stf07","fgco2nat_raw",        "ocean_bgc_ann","all",.true.,"none",2
-"ocean_model","stf09","fgco2_raw",        "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","cfc_11","cfc11_raw" ,"ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","cfc_12","cfc12_raw" ,"ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","adic","dissic_raw",      "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","dic","dissicnat_raw",       "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","caco3","arag_raw",     "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","alk","talk_raw",       "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","o2","o2_raw",        "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","no3","no3_raw",       "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","fe","fe_raw",        "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","det","pon_raw",       "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","phy","phyn_raw",       "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","dic_stf","fgco2nat_raw",        "ocean_bgc_ann","all",.true.,"none",2
+"generic_wombatlite","adic_stf","fgco2_raw",        "ocean_bgc_ann","all",.true.,"none",2
