@@ -21,11 +21,11 @@ queue: normal
 walltime: 2:30:00
 
 # Modules for loading model executables
-modules:
-  use:
-      - /g/data/vk83/modules
-  load:
-      - access-esm1p5/2024.05.0
+# modules:
+#   use:
+#       - /g/data/vk83/modules
+#   load:
+#       - access-esm1p5/2024.05.0
 
 # Model configuration
 model: access
@@ -34,7 +34,7 @@ submodels:
     - name: atmosphere
       model: um
       ncpus: 192
-      exe: um_hg3.exe
+      exe: /g/data/tm70/ds0092/software/spack/v0.22/restricted/ukmo/release/linux-rocky8-x86_64_v4/intel-19.0.3.199/um7-git.2024.07.03_access-esm1.5-7edh5orccaj2pesbjszxs2d6xfepiike/bin/um_hg3.exe
       input:
         # Aerosols
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/pre-industrial/atmosphere/aerosol/global.N96/2020.05.19/OCFF_1850_ESM1.anc
@@ -67,12 +67,11 @@ submodels:
     - name: ocean
       model: mom
       ncpus: 180
-      exe: fms_ACCESS-CM.x
+      exe: /g/data/tm70/ds0092/software/spack/v0.22/restricted/ukmo/release/linux-rocky8-x86_64_v4/intel-19.0.3.199/mom5-git.access-esm1.5_2024.06.20_access-esm1.5-sp4kmlun6e7nfzvjchm6wfxeaac5c7o6/bin/fms_ACCESS-ESM.x
       input:
         # Biogeochemistry
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/ocean/biogeochemistry/global.1deg/2020.05.19/dust.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/ocean/biogeochemistry/global.1deg/2020.05.19/ocmip2_press_monthly_om1p5_bc.nc
-        - /g/data/vk83/configurations/inputs/access-esm1p5/share/ocean/biogeochemistry/global.1deg/2024.07.12/bgc_param.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/unused/ocean/biogeochemistry/global.1deg/2020.05.19/ocmip2_fice_monthly_om1p5_bc.nc
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/unused/ocean/biogeochemistry/global.1deg/2020.05.19/ocmip2_xkw_monthly_om1p5_bc.nc
         # Tides
@@ -86,7 +85,7 @@ submodels:
     - name: ice
       model: cice
       ncpus: 12
-      exe: cice_access_360x300_12x1_12p.exe
+      exe: /g/data/tm70/ds0092/software/spack/v0.22/restricted/ukmo/release/linux-rocky8-x86_64_v4/intel-19.0.3.199/cice4-git.2024.05.21_access-esm1.5-nllxbdducbcqklgcbhnkcpjggmlgwcak/bin/cice_access_360x300_12x1_12p.exe
       input:
         # Grids
         - /g/data/vk83/configurations/inputs/access-esm1p5/modern/share/ice/grids/global.1deg/2020.05.19/kmt.nc
@@ -113,13 +112,15 @@ submodels:
 
 # Collation
 collate:
-    exe: mppnccombine.spack
+    exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
     restart: true
-    mem: 4GB
+    mem: 96GB
     walltime: 1:00:00
-    mpi: false
+    ncpus: 24
+    queue: normal
+    mpi: true
 
-restart: /g/data/vk83/configurations/inputs/access-esm1p5/modern/pre-industrial/restart/
+restart: /g/data/tm70/ds0092/model/inputs/access-esm1.5/modern/pre-industrial/restart/
 
 # Timing controls
 calendar:
@@ -138,10 +139,10 @@ runspersub: 1
 # Misc
 restart_freq: 10YS
 
-runlog: true
+runlog: false
 manifest:
   reproduce:
-    exe: True
+    exe: False
 
 
 stacksize: unlimited
