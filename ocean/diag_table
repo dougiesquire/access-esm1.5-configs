@@ -699,6 +699,19 @@
 "ocean_model","det_sed_depst","det_sed_depst",        "ocean_bgc","all",.true.,"none",2
 "ocean_model","caco3_sed_remin","caco3_sed_remin",        "ocean_bgc","all",.true.,"none",2
 "ocean_model","caco3_sed_depst","caco3_sed_depst",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","btf01","btf01",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","btf03","btf03",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","btf09","btf09",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","btf07","btf07",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","btf08","btf08",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","btf10","btf10",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","co2_saturation","co2_saturation",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","aco2_saturation","aco2_saturation",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","sc_o2","sc_o2",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","o2_saturation","o2_saturation",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","kw_o2","kw_o2",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","radbio3d","radbio3d",        "ocean_bgc","all",.true.,"none",2
+"ocean_model","light_limit","light_limit",        "ocean_bgc","all",.true.,"none",2
 
  "ocean_model","surface_no3","no3os_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
  "ocean_model","surface_phy","phynos_raw"  ,"ocean_bgc_mth","all",.true.,"none",2
