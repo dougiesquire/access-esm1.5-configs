@@ -700,6 +700,18 @@
 "generic_wombatlite","det_sed_depst","det_sed_depst",        "ocean_bgc","all",.true.,"none",2
 "generic_wombatlite","caco3_sed_remin","caco3_sed_remin",        "ocean_bgc","all",.true.,"none",2
 "generic_wombatlite","caco3_sed_depst","caco3_sed_depst",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","no3_btf","no3_btf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","o2_btf","o2_btf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","adic_btf","adic_btf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","dic_btf","dic_btf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","alk_btf","alk_btf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","fe_btf","fe_btf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","radbio3d","radbio3d",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","light_limit","light_limit",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","no3_vstf","no3_vstf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","adic_vstf","adic_vstf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","dic_vstf","dic_vstf",        "ocean_bgc","all",.true.,"none",2
+"generic_wombatlite","alk_vstf","alk_vstf",        "ocean_bgc","all",.true.,"none",2
 
 "atmos_sfc", "co2_flux_pcair_atm",     "co2_flux_pcair_atm","gtracer_flux","all",.true.,"none",2
 "atmos_sfc", "co2_flux_u10_atm",       "co2_flux_u10_atm",  "gtracer_flux","all",.true.,"none",2
