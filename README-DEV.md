@@ -30,13 +30,13 @@ This is the `config/ci.json` configuration file for specifying different test ma
 - `reproducibility`: Reproducibility tests that are run as part of pull requests. The keys under these tests represent the target branches into which pull requests are being merged.
 - `qa` - Quick quality assurance tests that are run as part of pull requests. The keys under these tests represent the target branches into which pull requests are being merged.
 
-The configuration properties needed to run the tests are:
+The configuration properties needed to run the tests are
 
 | Name | Type | Description |  Example |
 | ---- | ---- | ----------- | -------- |
 | markers | `string` | Markers used for the pytest checks, in the python format | `checksum` |
 | model-config-tests-version | `string` | The version of the model-config-tests | `0.0.1` |
-| python-version | `string` | The python version used to create test virtual environment | `3.11.0` |
+| payu-version | `string` | The Payu version used to create test virtual environment | `1.1.4` |
 
 As most of the tests use the same test and python versions, and similar markers, there are two levels of defaults. There's a default at test type level which is useful for defining test markers - this selects certain pytests to run in `model-config-tests`. There is an outer global default, which is used if a property is not defined for a given branch/tag, and it is not defined for the test default. The `parse-ci-config` action applies the fall-back default logic. For more information on using this action see [`ACCESS-NRI/model-config-tests`](https://github.com/ACCESS-NRI/model-config-tests/).
 
