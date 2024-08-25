@@ -24,12 +24,15 @@ Most configurations are adapted from work by the [CLEX CMS team](https://github.
 
 ## Supported configurations
 
-All available configurations are browsable under [the list of branches](https://github.com/ACCESS-NRI/access-esm1.5-configs/branches) and should also be listed below:
+All available configurations are browsable under [the list of release branches](https://github.com/ACCESS-NRI/access-esm1.5-configs/branches/all?query=release-) and should also be listed below:
 
 | Branch | Configuration Description |
 | ------ | ------------------------- |
+| [release-preindustrial+concentrations](https://github.com/ACCESS-NRI/access-esm1.5-configs/tree/release-preindustrial%2Bconcentrations) | Concentration driven CO<sub>2</sub> under pre-industrial forcings | 
+| [release-historical+concentrations](https://github.com/ACCESS-NRI/access-esm1.5-configs/tree/release-historical%2Bconcentrations) | Concentration driven CO<sub>2</sub> under historical forcings (1850-2014) | 
 
-There are more detailed notes contained in the respective branches for each configuration.
+There are more detailed notes contained in the respective branches for each configuration
+and release notes are posted on [this ACCESS Hive Forum topic]([url](https://forum.access-hive.org.au/t/access-esm1-5-release-information/2352).
 
 More supported configurations will be added over time.
 
@@ -37,19 +40,16 @@ More supported configurations will be added over time.
 
 All configurations use [payu](https://github.com/payu-org/payu) to run the model.
 
-This repository contains many related experimental configurations to make support
+This repository contains related experimental configurations to make support
 and discovery easier. As a user it does not necessarily make sense to clone all the
 configurations at once.
 
-In most cases only a single experiment is required. If that is the case choose which experiment and then run
-
-```sh
-git clone -b <experiment> https://github.com/ACCESS-NRI/model-configs/ <experiment>
-```
-
-and replace `<experiment>` with the branch name or tag of the experiment you wish to run.
-
 [ACCESS-Hive](https://access-hive.org.au/) contains [detailed instructions for how to configure and run `ACCESS-ESM1.5` with `payu`](https://access-hive.org.au/models/run-a-model).
+
+## Help and Support
+
+If you have questions about these configurations [follow the guidelines for requesting support from ACCESS-NRI ](https://forum.access-hive.org.au/t/access-help-and-support/908)
+on the [ACCESS Hive Forum](https://forum.access-hive.org.au/).
 
 ## CI and Reproducibility Checks
 
