@@ -112,13 +112,12 @@ submodels:
 
 # Collation
 collate:
-    exe: /g/data/vk83/apps/mppnccombine-fast/0.2/bin/mppnccombine-fast
+    exe: /g/data/tm70/ds0092/software/spack/v0.22/restricted/ukmo/release/linux-rocky8-x86_64_v4/intel-19.0.3.199/mom5-git.access-esm1.5_2024.06.20_access-esm1.5-sp4kmlun6e7nfzvjchm6wfxeaac5c7o6/bin/mppnccombine.spack
     restart: true
-    mem: 96GB
+    mem: 24GB
     walltime: 1:00:00
-    ncpus: 24
     queue: normal
-    mpi: true
+    mpi: false
 
 restart: /g/data/tm70/ds0092/model/inputs/access-esm1.5/modern/pre-industrial/restart/
 
@@ -130,8 +129,8 @@ calendar:
         days: 1
 
     runtime:
-        years: 1
-        months: 0
+        years: 0
+        months: 1
         days: 0
 
 runspersub: 1
